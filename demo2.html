@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FURYHUB | Premium Digital Access</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0E0E0E;
+            --card-bg: #1A1A1A;
+            --accent: #D4AF37; /* Soft Gold */
+            --accent-glow: rgba(212, 175, 55, 0.2);
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --nav-blur: rgba(14, 14, 14, 0.8);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor will be used */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            background: var(--accent-glow);
+        }
+
+        .cursor-hover {
+            transform: scale(2.5);
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: #fff !important;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--nav-blur);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            margin-top: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            max-width: 90%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- Trusted Section --- */
+        .trusted {
+            padding: 80px 8%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trusted-logos span {
+            font-weight: 700;
+            font-size: 1.5rem;
+            filter: grayscale(1);
+            transition: var(--transition);
+        }
+
+        .trusted-logos span:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* --- Products Section --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 { font-size: 2.5rem; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 8% 100px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            background: #222222;
+        }
+
+        .product-card i {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .product-card p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* --- Why Choose Us --- */
+        .features {
+            background: #121212;
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .feat-item h4 {
+            margin: 15px 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .feat-item p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* --- WhatsApp FAB --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 8% 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+
+        .made-by {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .made-by a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-image { margin-top: 50px; }
+            .hero-btns { justify-content: center; }
+            .trusted-logos { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="index.html" class="logo-area">
+            <img src="logo.png" alt="FURYHUB" class="logo-img">
+            <span class="brand-name">FURYHUB</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="offer.html">Offers</a>
+            <a href="about.info">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Premium Digital Access. Unmatched Prices.</h1>
+            <p>Unlock top-tier digital platforms and services at unbeatable value. Secure, reliable, and instantly delivered.</p>
+            <div class="hero-btns">
+                <a href="product.html" class="btn btn-primary">View Products</a>
+                <a href="offer.html" class="btn btn-secondary">Explore Offers</a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <img src="hero.png" alt="Digital Luxury">
+        </div>
+    </section>
+
+    <!-- Trusted Section -->
+    <div class="trusted">
+        <div class="trusted-logos" data-aos="fade-in">
+            <span>Netflix</span>
+            <span>Prime Video</span>
+            <span>Spotify</span>
+            <span>Discord</span>
+            <span>YouTube Premium</span>
+        </div>
+    </div>
+
+    <!-- Products Showcase -->
+    <section style="padding: 100px 0;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Collection</h2>
+        </div>
+        <div class="product-grid">
+            <a href="product.html" class="product-card" data-aos="zoom-in" data-aos-delay="100">
+                <i data-lucide="tv-2" size="40"></i>
+                <h3>Netflix</h3>
+                <p>Ultra HD streaming with private profile access.</p>
+            </a>
+            <a href="product.html" class="product-card" data-aos="zoom-in" data-aos-delay="200">
+                <i data-lucide="play-circle" size="40"></i>
+                <h3>Prime Video</h3>
+                <p>Worldwide access to premium movies and originals.</p>
+            </a>
+            <a href="product.html" class="product-card" data-aos="zoom-in" data-aos-delay="300">
+                <i data-lucide="message-square" size="40"></i>
+                <h3>Discord Services</h3>
+                <p>Nitro and boosting services at a fraction of cost.</p>
+            </a>
+            <a href="product.html" class="product-card" data-aos="zoom-in" data-aos-delay="400">
+                <i data-lucide="music" size="40"></i>
+                <h3>Spotify Premium</h3>
+                <p>Uninterrupted ad-free music across all devices.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="100">
+            <i data-lucide="zap" color="#D4AF37"></i>
+            <h4>Instant Delivery</h4>
+            <p>Your digital assets are delivered to your dashboard instantly after payment.</p>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="200">
+            <i data-lucide="shield-check" color="#D4AF37"></i>
+            <h4>Secure & Reliable</h4>
+            <p>Industry-leading security protocols to keep your data and access safe.</p>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="300">
+            <i data-lucide="banknote" color="#D4AF37"></i>
+            <h4>Massive Savings</h4>
+            <p>High-end digital luxury shouldn't break the bank. Get more for less.</p>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="400">
+            <i data-lucide="globe" color="#D4AF37"></i>
+            <h4>Wide Range</h4>
+            <p>From streaming to social boosting, we cover all your digital needs.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <a href="https://wa.me/916386443062" class="whatsapp-float">
+        <i data-lucide="phone" color="#fff"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="about.info">About Us</a>
+            <a href="product.html">Products</a>
+            <a href="https://wa.me/916386443062">Support: +91 63864 43062</a>
+        </div>
+        <p class="copyright">© 2026 FURYHUB. All rights reserved.</p>
+        <p class="made-by">Made by <a href="https://wa.me/919024487624">legend</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-quart'
+        });
+
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Custom Cursor Logic
+        const cursor = document.querySelector('#cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Hover Effect for Cursor
+        const links = document.querySelectorAll('a, button, .product-card');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+            link.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+        });
+
+        // Smooth Scroll for Navbar Blur
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '15px 8%';
+                nav.style.background = 'rgba(14, 14, 14, 0.95)';
+            } else {
+                nav.style.padding = '20px 8%';
+                nav.style.background = 'rgba(14, 14, 14, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
