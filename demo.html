@@ -19,7 +19,7 @@
             --accent-glow: rgba(212, 175, 55, 0.2);
             --text-main: #FFFFFF;
             --text-dim: #A0A0A0;
-            --nav-blur: rgba(10, 10, 10, 0.8);
+            --nav-blur: rgba(10, 10, 10, 0.9);
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -27,7 +27,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
+            /* Cursor removed as requested */
         }
 
         body {
@@ -40,25 +40,6 @@
 
         h1, h2, h3, .brand-name { font-family: 'Poppins', sans-serif; }
 
-        /* --- Custom Cursor --- */
-        #cursor {
-            width: 20px;
-            height: 20px;
-            border: 1px solid var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease-out;
-            background: var(--accent-glow);
-        }
-
-        .cursor-hover {
-            transform: scale(3);
-            background: rgba(255, 255, 255, 0.05) !important;
-            border-color: #fff !important;
-        }
-
         /* --- Navbar --- */
         nav {
             position: fixed;
@@ -67,258 +48,241 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 5%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            background: var(--nav-blur);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-img {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
         }
 
         .brand-name {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #fff;
-            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #fff;
-            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            letter-spacing: 0.5px;
-            opacity: 0.8;
         }
 
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO SECTION: FULL WIDTH OVERLAY --- */
+        /* --- Hero Section (Full Image Visibility) --- */
         .hero {
             position: relative;
-            height: 100vh;
             width: 100%;
+            padding-top: 80px; /* Space for navbar */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            overflow: hidden;
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-banner {
             width: 100%;
-            height: 100%;
-            z-index: -1;
+            line-height: 0;
+            position: relative;
         }
 
-        .hero-bg img {
+        .hero-banner img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* 100% Width Coverage */
-            filter: brightness(0.4) saturate(1.2); /* Darkened for text readability */
+            height: auto; /* Ensures full visibility edge-to-edge */
+            display: block;
         }
 
-        /* Cinematic Gradient Overlays */
-        .hero-bg::after {
+        /* Gradient to blend image into text section */
+        .hero-banner::after {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, transparent 20%, rgba(14,14,14,0.8) 100%),
-                        linear-gradient(to top, var(--bg-color) 0%, transparent 30%);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-color), transparent);
         }
 
         .hero-content {
             max-width: 900px;
-            z-index: 2;
+            padding: 60px 5% 100px;
+            text-align: center;
+            margin-top: -50px; /* Slight pull up for design */
+            position: relative;
+            z-index: 5;
         }
 
         .hero-content h1 {
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: linear-gradient(to bottom, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
-            color: #e0e0e0;
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            max-width: 650px;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
             margin: 0 auto 40px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .hero-btns {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
         }
 
-        /* --- Buttons --- */
         .btn {
-            padding: 18px 38px;
-            border-radius: 12px;
+            padding: 16px 35px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
             transition: var(--transition);
         }
 
         .btn-primary {
             background: var(--accent);
             color: #000;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--accent-glow);
         }
 
         .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
             color: #fff;
-            backdrop-filter: blur(10px);
         }
-
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
         /* --- Trusted Section --- */
         .trusted {
-            padding: 60px 8%;
-            background: var(--bg-color);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding: 60px 5%;
+            background: #111;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .trusted-logos {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
         }
 
-        .brand-logo {
-            height: 35px;
-            width: auto;
-            opacity: 0.5;
-            filter: grayscale(1) brightness(2);
+        .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.6;
             transition: var(--transition);
+            filter: grayscale(1);
         }
 
-        .brand-logo:hover {
+        .brand-item:hover {
             opacity: 1;
-            filter: grayscale(0) brightness(1);
-            transform: scale(1.15);
+            filter: grayscale(0);
+            transform: translateY(-5px);
         }
 
-        /* --- Feature Cards --- */
-        .features-section { padding: 100px 8%; }
+        .brand-logo {
+            height: 30px;
+            width: auto;
+        }
 
-        .section-title { text-align: center; margin-bottom: 70px; }
-        .section-title h2 { font-size: 2.8rem; letter-spacing: -1px; }
+        .brand-name-text {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+        }
 
-        .feature-grid {
+        /* --- Features --- */
+        .features {
+            padding: 100px 8%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
         }
 
-        .feature-card {
+        .feat-card {
             background: var(--card-bg);
-            padding: 50px 35px;
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.04);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
             transition: var(--transition);
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .feat-card:hover {
             border-color: var(--accent);
-            background: #1c1c1c;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow);
+            transform: translateY(-10px);
         }
 
-        .feature-card i { margin-bottom: 25px; color: var(--accent); }
-        .feature-card h3 { margin-bottom: 12px; font-size: 1.4rem; }
-        .feature-card p { color: var(--text-dim); font-size: 0.95rem; }
+        .feat-card i { color: var(--accent); margin-bottom: 20px; display: block; }
+        .feat-card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+        .feat-card p { color: var(--text-dim); font-size: 0.9rem; }
 
         /* --- WhatsApp FAB --- */
         .whatsapp-float {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 30px;
+            right: 30px;
             background: #25D366;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 999;
-            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-
-        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
         /* --- Footer --- */
         footer {
-            padding: 80px 8% 40px;
-            background: #070707;
+            padding: 60px 5%;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .footer-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
-        .footer-links a:hover { color: var(--accent); }
-        .copyright { color: #333; font-size: 0.8rem; }
-        .made-by { margin-top: 10px; font-size: 0.8rem; color: #444; }
-        .made-by a { color: var(--accent); text-decoration: none; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; margin: 0 15px; font-size: 0.85rem; }
+        .copyright { color: #444; font-size: 0.8rem; }
 
         /* Mobile */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-content h1 { font-size: 3rem; }
-            .hero-btns { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; }
+            .hero-content h1 { font-size: 2.2rem; }
             .trusted-logos { gap: 30px; }
-            .brand-logo { height: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-
     <!-- Navbar -->
-    <nav id="navbar">
+    <nav>
         <a href="index.html" class="logo-area">
             <img src="logo.png" alt="FURYHUB" class="logo-img">
             <span class="brand-name">FURYHUB</span>
@@ -333,63 +297,69 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg">
-            <img src="hero1.gif" alt="Premium Background">
+        <div class="hero-banner">
+            <!-- Full Width Image, Fully Visible -->
+            <img src="hero1.gif" alt="FURYHUB Premium Access">
         </div>
-        <div class="hero-content" data-aos="zoom-out">
-            <h1>Premium Digital Access.<br>Unmatched Prices.</h1>
-            <p>Experience luxury streaming and digital services without the premium price tag. Secure, instant, and reliable delivery.</p>
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Elevate Your Digital Lifestyle.</h1>
+            <p>Premium streaming, music, and social accounts at the most affordable prices in the market. Fast, safe, and guaranteed.</p>
             <div class="hero-btns">
-                <a href="product.html" class="btn btn-primary">Get Access Now</a>
-                <a href="offer.html" class="btn btn-secondary">View Special Offers</a>
+                <a href="product.html" class="btn btn-primary">Shop Now</a>
+                <a href="offer.html" class="btn btn-secondary">Current Offers</a>
             </div>
         </div>
     </section>
 
     <!-- Trusted Brands -->
     <div class="trusted">
-        <div class="trusted-logos" data-aos="fade-up">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" class="brand-logo">
-            <!-- Discord Local Logo Fix -->
-            <img src="discord_logo.png" alt="Discord" class="brand-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" class="brand-logo">
+        <div class="trusted-logos" data-aos="fade-in">
+            <div class="brand-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="brand-logo">
+            </div>
+            <div class="brand-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="brand-logo">
+            </div>
+            <div class="brand-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" class="brand-logo">
+            </div>
+            <div class="brand-item">
+                <img src="discord_logo.png" alt="Discord" class="brand-logo">
+                <span class="brand-name-text">Discord</span>
+            </div>
+            <div class="brand-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" class="brand-logo">
+            </div>
         </div>
     </div>
 
-    <!-- Feature Cards -->
-    <section class="features-section">
-        <div class="section-title" data-aos="fade-up">
-            <h2>The FURYHUB Experience</h2>
+    <!-- Features -->
+    <section class="features">
+        <div class="feat-card" data-aos="fade-up" data-aos-delay="100">
+            <i data-lucide="shield-check" size="32"></i>
+            <h3>Most Trusted</h3>
+            <p>We pride ourselves on 100% verified digital assets and secure transactions.</p>
         </div>
-        <div class="feature-grid">
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <i data-lucide="shield-check" size="40"></i>
-                <h3>Most Trusted</h3>
-                <p>Verified accounts and industry-standard safety protocols for every user.</p>
-            </div>
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <i data-lucide="star" size="40"></i>
-                <h3>4.6 Rating</h3>
-                <p>Hundreds of positive reviews from our worldwide premium community.</p>
-            </div>
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <i data-lucide="users" size="40"></i>
-                <h3>100+ Customers</h3>
-                <p>Serving a diverse range of clients with 24/7 dedicated account support.</p>
-            </div>
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                <i data-lucide="trending-down" size="40"></i>
-                <h3>Cheapest in Market</h3>
-                <p>We bridge the gap between high-end digital luxury and affordable pricing.</p>
-            </div>
+        <div class="feat-card" data-aos="fade-up" data-aos-delay="200">
+            <i data-lucide="star" size="32"></i>
+            <h3>4.6 Rating</h3>
+            <p>Highly rated by our user base for reliability and speed of delivery.</p>
+        </div>
+        <div class="feat-card" data-aos="fade-up" data-aos-delay="300">
+            <i data-lucide="smile" size="32"></i>
+            <h3>100+ Happy Customers</h3>
+            <p>Join hundreds of satisfied users who save money on digital subscriptions.</p>
+        </div>
+        <div class="feat-card" data-aos="fade-up" data-aos-delay="400">
+            <i data-lucide="banknote" size="32"></i>
+            <h3>Cheapest in Market</h3>
+            <p>We offer the lowest prices without compromising on the quality of access.</p>
         </div>
     </section>
 
-    <!-- WhatsApp Support -->
+    <!-- WhatsApp -->
     <a href="https://wa.me/916386443062" class="whatsapp-float">
-        <i data-lucide="phone" color="#fff" size="28"></i>
+        <i data-lucide="phone" color="#fff"></i>
     </a>
 
     <!-- Footer -->
@@ -403,37 +373,10 @@
         <p class="made-by">Made by <a href="https://wa.me/919024487624">legend</a></p>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
         lucide.createIcons();
-
-        // Custom Cursor
-        const cursor = document.querySelector('#cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Hover Effect
-        const links = document.querySelectorAll('a, button, .feature-card, .brand-logo');
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-            link.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-        });
-
-        // Navbar Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-                nav.style.padding = '15px 5%';
-            } else {
-                nav.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%)';
-                nav.style.padding = '25px 5%';
-            }
-        });
     </script>
 </body>
 </html>
