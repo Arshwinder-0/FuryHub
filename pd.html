@@ -217,9 +217,10 @@
         }
 
         .card:hover {
-            animation: cardLift 0.5s ease forwards;
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.06);
+    animation: cardLift 0.5s ease forwards;
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.06);
+    z-index: 100;
         }
 
         .card:hover::before { opacity: 1; }
@@ -257,7 +258,7 @@
         /* --- Dropdown --- */
         .dropdown {
             position: relative; margin-bottom: 15px;
-            z-index: 50;
+            z-index: 200;
         }
 
         .dropdown-toggle {
@@ -297,7 +298,7 @@
             left: 0; width: 100%;
             background: #1a1a1a;
             border: 1px solid var(--accent);
-            border-radius: 12px; z-index: 200;
+            border-radius: 12px; z-index: 9000;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
             overflow: hidden;
             max-height: 0;
@@ -307,10 +308,11 @@
         }
 
         .dropdown-list.show {
-            max-height: 350px;
-            opacity: 1;
-            pointer-events: all;
-        }
+    max-height: 300px;
+    opacity: 1;
+    pointer-events: all;
+    overflow-y: auto;
+}
 
         .dropdown-item {
             padding: 12px 15px; font-size: 0.85rem;
