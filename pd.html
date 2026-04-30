@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,15 +67,8 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .logo-area {
-            display: flex; align-items: center; gap: 10px; text-decoration: none;
-        }
-
-        .logo-img-nav {
-            width: 35px; height: 35px; border-radius: 6px;
-            transition: var(--transition);
-        }
-
+        .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-img-nav { width: 35px; height: 35px; border-radius: 6px; transition: var(--transition); }
         .logo-area:hover .logo-img-nav { transform: rotate(10deg) scale(1.1); }
 
         .brand-name {
@@ -89,19 +81,15 @@
         }
 
         .nav-links { display: flex; align-items: center; }
-
         .nav-links a {
             text-decoration: none; color: var(--text-dim); font-size: 0.85rem;
             margin-left: 30px; transition: var(--transition);
             position: relative; padding-bottom: 5px;
         }
-
         .nav-links a::after {
             content: ''; position: absolute; bottom: 0; left: 0;
-            width: 0; height: 2px; background: var(--accent);
-            transition: var(--transition);
+            width: 0; height: 2px; background: var(--accent); transition: var(--transition);
         }
-
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
         .nav-links a:hover { color: var(--accent); }
 
@@ -111,27 +99,22 @@
             color: var(--accent); padding: 8px; border-radius: 8px;
             cursor: pointer; transition: var(--transition);
         }
-
         .mobile-menu-btn:hover { background: var(--accent-soft); }
 
         .mobile-nav {
             display: none; position: fixed; top: 65px; left: 0; width: 100%;
             background: rgba(8, 8, 8, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
             z-index: 999; padding: 20px 5%;
             animation: slideDown 0.3s ease;
         }
-
         .mobile-nav.show { display: flex; flex-direction: column; gap: 10px; }
-
         .mobile-nav a {
             text-decoration: none; color: var(--text-dim); font-size: 1rem;
             padding: 12px 15px; border-radius: 12px;
             transition: var(--transition); border: 1px solid transparent;
         }
-
         .mobile-nav a:hover, .mobile-nav a.active {
             color: var(--accent); background: var(--accent-soft);
             border-color: rgba(212, 175, 55, 0.2);
@@ -142,7 +125,6 @@
             width: 100%; position: relative;
             padding: 80px 15px 0; background: var(--bg-color);
         }
-
         .banner-section img {
             width: 100%; height: auto; display: block;
             border-radius: 20px;
@@ -155,39 +137,25 @@
             max-width: 900px; margin: 40px auto; position: relative;
             z-index: 20; padding: 0 20px;
         }
-
         .stats-glass {
             background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            display: flex; justify-content: space-around;
+            border-radius: 24px; display: flex; justify-content: space-around;
             padding: 30px; text-align: center;
         }
-
         .stat-box { transition: var(--transition); }
         .stat-box:hover { transform: scale(1.05); }
-
-        .stat-box h3 {
-            color: var(--accent); font-size: 1.8rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .stat-box p {
-            color: var(--text-dim); font-size: 0.7rem;
-            text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;
-        }
+        .stat-box h3 { color: var(--accent); font-size: 1.8rem; font-family: 'Poppins', sans-serif; }
+        .stat-box p { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
 
         /* --- Container --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px 5% 100px; }
 
         .section-title {
             font-size: 1.8rem; margin: 60px 0 30px;
-            display: flex; align-items: center; gap: 15px;
-            font-family: 'Poppins';
+            display: flex; align-items: center; gap: 15px; font-family: 'Poppins';
         }
-
         .section-title::after {
             content: ''; flex: 1; height: 1px;
             background: linear-gradient(to right, var(--accent), transparent);
@@ -196,50 +164,37 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 22px;
+            gap: 22px; position: relative;
         }
 
         /* --- Card --- */
         .card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius); padding: 28px;
-    transition: var(--transition); position: relative;
-    overflow: visible; cursor: default;
-    z-index: 1;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius); padding: 28px;
+            transition: var(--transition); position: relative;
+            overflow: visible; cursor: default; z-index: 1;
         }
-
         .card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
             opacity: 0; transition: var(--transition);
         }
-
         .card:hover {
-    animation: cardLift 0.5s ease forwards;
-    border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.06);
-    z-index: 100;
+            animation: cardLift 0.5s ease forwards;
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.06);
+            z-index: 100;
         }
-
         .card:hover::before { opacity: 1; }
 
         .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-
-        .brand-icon {
-            width: 50px; height: 50px; object-fit: contain;
-            border-radius: 12px; transition: var(--transition);
-        }
-
+        .brand-icon { width: 50px; height: 50px; object-fit: contain; border-radius: 12px; transition: var(--transition); }
         .card:hover .brand-icon { transform: scale(1.1); }
         .card-title { font-size: 1.1rem; font-weight: 600; }
 
-        .price {
-            font-size: 1.6rem; font-weight: 700;
-            color: var(--accent); margin-bottom: 20px;
-        }
-
+        .price { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
         .price span { font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
 
         .card-tag {
@@ -250,16 +205,10 @@
             text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .card-desc {
-            color: var(--text-dim); font-size: 0.8rem;
-            margin-bottom: 18px; line-height: 1.5;
-        }
+        .card-desc { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 18px; line-height: 1.5; }
 
         /* --- Dropdown --- */
-        .dropdown {
-            position: relative; margin-bottom: 15px;
-            z-index: 200;
-        }
+        .dropdown { position: relative; margin-bottom: 15px; z-index: 200; }
 
         .dropdown-toggle {
             background: rgba(255, 255, 255, 0.03);
@@ -268,30 +217,22 @@
             cursor: pointer; display: flex;
             justify-content: space-between; align-items: center;
             font-size: 0.9rem; width: 100%; color: var(--text-main);
-            transition: var(--transition);
-            user-select: none;
+            transition: var(--transition); user-select: none;
             font-family: 'Inter', sans-serif;
         }
-
         .dropdown-toggle:hover {
             border-color: rgba(212, 175, 55, 0.4);
             background: rgba(212, 175, 55, 0.04);
         }
-
         .dropdown-toggle.open {
             border-color: var(--accent);
             background: rgba(212, 175, 55, 0.06);
         }
-
         .dropdown-toggle svg {
             width: 18px; height: 18px;
-            transition: transform 0.3s ease;
-            color: var(--accent);
+            transition: transform 0.3s ease; color: var(--accent);
         }
-
-        .dropdown-toggle.open svg {
-            transform: rotate(180deg);
-        }
+        .dropdown-toggle.open svg { transform: rotate(180deg); }
 
         .dropdown-list {
             position: absolute; top: calc(100% + 6px);
@@ -300,19 +241,14 @@
             border: 1px solid var(--accent);
             border-radius: 12px; z-index: 9000;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
+            overflow-y: auto; max-height: 0; opacity: 0;
             transition: max-height 0.35s ease, opacity 0.25s ease;
             pointer-events: none;
         }
-
         .dropdown-list.show {
-    max-height: 300px;
-    opacity: 1;
-    pointer-events: all;
-    overflow-y: auto;
-}
+            max-height: 300px; opacity: 1;
+            pointer-events: all; overflow-y: auto;
+        }
 
         .dropdown-item {
             padding: 12px 15px; font-size: 0.85rem;
@@ -321,13 +257,8 @@
             color: var(--text-main);
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
-
         .dropdown-item:last-child { border-bottom: none; }
-
-        .dropdown-item:hover {
-            background: var(--accent); color: #000;
-        }
-
+        .dropdown-item:hover { background: var(--accent); color: #000; }
         .dropdown-item:hover b { color: #000; }
         .dropdown-item b { color: var(--accent); transition: 0.2s; }
 
@@ -341,20 +272,16 @@
             font-size: 0.95rem; position: relative; overflow: hidden;
             font-family: 'Inter', sans-serif;
         }
-
         .buy-btn::before {
             content: ''; position: absolute; top: 0; left: -100%;
             width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
             transition: 0.5s;
         }
-
         .buy-btn:hover::before { left: 100%; }
-
         .buy-btn:hover {
             background: var(--accent); color: #000;
-            box-shadow: 0 0 25px var(--accent-glow);
-            transform: scale(1.02);
+            box-shadow: 0 0 25px var(--accent-glow); transform: scale(1.02);
         }
 
         .dm-btn {
@@ -363,67 +290,46 @@
             border: none; color: #000; border-radius: 12px;
             font-weight: 700; cursor: pointer; transition: var(--transition);
             text-align: center; display: block; text-decoration: none;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; font-family: 'Inter', sans-serif;
         }
-
-        .dm-btn:hover {
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: scale(1.02);
-        }
+        .dm-btn:hover { box-shadow: 0 0 30px var(--accent-glow); transform: scale(1.02); }
 
         .info-btn {
             margin-bottom: 10px; padding: 10px; width: 100%;
-            background: var(--accent-soft);
-            border: 1px dashed var(--accent);
+            background: var(--accent-soft); border: 1px dashed var(--accent);
             color: var(--accent); border-radius: 10px;
             font-size: 0.8rem; cursor: pointer; transition: var(--transition);
             font-family: 'Inter', sans-serif;
         }
-
-        .info-btn:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: scale(1.02);
-        }
+        .info-btn:hover { background: rgba(212, 175, 55, 0.2); transform: scale(1.02); }
 
         /* --- Website Tags --- */
         .website-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-
         .website-features .tag {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.08);
             padding: 5px 12px; border-radius: 20px;
-            font-size: 0.72rem; color: #bbb;
-            transition: var(--transition);
+            font-size: 0.72rem; color: #bbb; transition: var(--transition);
         }
-
-        .website-features .tag:hover {
-            border-color: var(--accent); color: var(--accent);
-        }
+        .website-features .tag:hover { border-color: var(--accent); color: var(--accent); }
 
         /* --- Modal --- */
         .modal-overlay {
             position: fixed; inset: 0;
             background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             z-index: 9999; display: none;
-            align-items: center; justify-content: center;
-            padding: 20px;
+            align-items: center; justify-content: center; padding: 20px;
         }
-
         .modal-overlay.active { display: flex; }
 
         .modal-content {
             background: #111; border: 1px solid var(--accent);
             border-radius: 24px; max-width: 620px; width: 100%;
-            padding: 40px;
-            box-shadow: 0 0 50px var(--accent-glow);
-            position: relative; max-height: 90vh;
-            overflow-y: auto;
+            padding: 40px; box-shadow: 0 0 50px var(--accent-glow);
+            position: relative; max-height: 90vh; overflow-y: auto;
             animation: scaleIn 0.3s ease;
         }
-
         .modal-content::-webkit-scrollbar { width: 4px; }
         .modal-content::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
 
@@ -432,25 +338,13 @@
             cursor: pointer; color: var(--accent); transition: var(--transition);
             width: 35px; height: 35px;
             display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%; border: 1px solid rgba(212,175,55,0.3);
             background: none;
         }
+        .modal-close:hover { transform: rotate(90deg); background: var(--accent-soft); }
 
-        .modal-close:hover {
-            transform: rotate(90deg);
-            background: var(--accent-soft);
-        }
-
-        .modal-title {
-            color: var(--accent); text-align: center; font-size: 1.5rem;
-            font-family: 'Poppins', sans-serif; font-weight: 700;
-        }
-
-        .modal-subtitle {
-            text-align: center; font-size: 0.8rem;
-            color: #777; margin-top: 5px; margin-bottom: 30px;
-        }
+        .modal-title { color: var(--accent); text-align: center; font-size: 1.5rem; font-family: 'Poppins', sans-serif; font-weight: 700; }
+        .modal-subtitle { text-align: center; font-size: 0.8rem; color: #777; margin-top: 5px; margin-bottom: 30px; }
 
         .feature-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
 
@@ -462,31 +356,20 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px; transition: var(--transition);
         }
-
         .feat-item:hover {
             border-color: rgba(212, 175, 55, 0.3);
             background: rgba(212, 175, 55, 0.05);
             transform: translateX(5px);
         }
-
-        .feat-item i, .feat-item svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px; }
-
+        .feat-item svg { color: var(--accent); flex-shrink: 0; margin-top: 2px; width: 20px; height: 20px; }
         .feat-item .feat-text strong { color: #fff; display: block; font-size: 0.9rem; margin-bottom: 2px; }
         .feat-item .feat-text span { color: #888; font-size: 0.78rem; }
 
-        .modal-footer-text {
-            text-align: center; margin-top: 30px;
-            font-weight: 700; color: var(--accent); font-size: 0.9rem;
-        }
+        .modal-footer-text { text-align: center; margin-top: 30px; font-weight: 700; color: var(--accent); font-size: 0.9rem; }
 
         /* --- Footer --- */
-        footer {
-            padding: 60px 5%; text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
         footer p { color: #555; font-size: 0.85rem; }
-
         .made-by { color: #444; font-size: 0.8rem; margin-top: 10px; }
         .made-by a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition); }
         .made-by a:hover { text-decoration: underline; }
@@ -653,11 +536,23 @@
                 <button onclick="buyFromDropdown(this, 'Chaupal')" class="buy-btn">Buy Now</button>
             </div>
 
+            <!-- Crunchyroll -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_app_logo.png" class="brand-icon" alt="Crunchyroll">
+                    <span class="card-title">Crunchyroll</span>
+                </div>
+                <div class="price">1 Month <span>— Custom Pricing</span></div>
+                <a href="https://wa.me/916386443062?text=Hello%20YASH🔥!%0A%0AI%20am%20interested%20in%20Crunchyroll%201%20Month%20plan.%0A%0APlease%20share%20pricing%20and%20details." class="dm-btn">💬 DM For Prices</a>
+            </div>
+
         </div>
 
-        <!-- ===== DESIGN TOOLS ===== -->
-        <h2 class="section-title" data-aos="fade-right">🎨 Design Tools</h2>
+        <!-- ===== DESIGN & MUSIC ===== -->
+        <h2 class="section-title" data-aos="fade-right">🎨 Design & Music Tools</h2>
         <div class="grid">
+
+            <!-- Canva Pro -->
             <div class="card" data-aos="fade-up">
                 <div class="card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg" class="brand-icon" alt="Canva Pro">
@@ -666,6 +561,17 @@
                 <div class="price">₹200 <span>/ Year</span></div>
                 <button onclick="buyNow('Canva Pro', 'Yearly Plan - ₹200')" class="buy-btn">Buy Now</button>
             </div>
+
+            <!-- Spotify -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" class="brand-icon" alt="Spotify">
+                    <span class="card-title">Spotify Premium</span>
+                </div>
+                <div class="price">₹130 <span>/ 3 Months</span></div>
+                <button onclick="buyNow('Spotify Premium', '3 Months Plan - ₹130')" class="buy-btn">Buy Now</button>
+            </div>
+
         </div>
 
         <!-- ===== INSTAGRAM ===== -->
@@ -700,8 +606,28 @@
         <h2 class="section-title" data-aos="fade-right">💬 Discord Services</h2>
         <div class="grid">
 
-            <!-- Bot -->
+            <!-- Discord Nitro -->
             <div class="card" data-aos="fade-up" data-aos-delay="0">
+                <span class="card-tag">🔥 Hot</span>
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Discord_app_and_server_nitro_boosting_icon.svg" class="brand-icon" alt="Discord Nitro">
+                    <span class="card-title">Discord Nitro</span>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        <span>Select Plan</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="dropdown-list">
+                        <div class="dropdown-item" onclick="selectOption(this, '1 Month', '₹80')"><span>1 Month</span> <b>₹80</b></div>
+                        <div class="dropdown-item" onclick="selectOption(this, '3 Months', '₹200')"><span>3 Months</span> <b>₹200</b></div>
+                    </div>
+                </div>
+                <button onclick="buyFromDropdown(this, 'Discord Nitro')" class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- Bot -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <div class="card-header">
                     <img src="bot.png" class="brand-icon" alt="Discord Bot">
                     <span class="card-title">Discord Bot</span>
@@ -712,7 +638,7 @@
             </div>
 
             <!-- Server Setup -->
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-header">
                     <i data-lucide="server" class="brand-icon" style="color:var(--accent)"></i>
                     <span class="card-title">Discord Server Setup</span>
@@ -731,7 +657,7 @@
             </div>
 
             <!-- OwO -->
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card" data-aos="fade-up" data-aos-delay="0">
                 <div class="card-header">
                     <img src="owo.png" class="brand-icon" alt="OwO Cash">
                     <span class="card-title">1 Million OwO</span>
@@ -877,14 +803,11 @@
         AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic', offset: 60 });
         lucide.createIcons();
 
-        /* ===== DROPDOWN SYSTEM ===== */
+        /* ===== DROPDOWN ===== */
         function toggleDropdown(toggleEl) {
-            const list = toggleEl.nextElementSibling;
-            const isOpen = list.classList.contains('show');
-
-            // Close all dropdowns first
+            var list = toggleEl.nextElementSibling;
+            var isOpen = list.classList.contains('show');
             closeAllDropdowns();
-
             if (!isOpen) {
                 list.classList.add('show');
                 toggleEl.classList.add('open');
@@ -892,10 +815,9 @@
         }
 
         function selectOption(itemEl, name, price) {
-            const dropdown = itemEl.closest('.dropdown');
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            const list = dropdown.querySelector('.dropdown-list');
-
+            var dropdown = itemEl.closest('.dropdown');
+            var toggle = dropdown.querySelector('.dropdown-toggle');
+            var list = dropdown.querySelector('.dropdown-list');
             toggle.querySelector('span').textContent = name + ' (' + price + ')';
             toggle.setAttribute('data-selected', name + ' - ' + price);
             list.classList.remove('show');
@@ -911,14 +833,13 @@
             });
         }
 
-        // Close dropdowns when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.dropdown')) {
                 closeAllDropdowns();
             }
         });
 
-        /* ===== BUY FUNCTIONS ===== */
+        /* ===== BUY ===== */
         function buyNow(product, plan) {
             var num = "916386443062";
             var text = "Hello YASH🔥!%0A%0AI want to buy: *" + product + "*%0APlan: *" + plan + "*%0A%0APlease provide info and payment methods.";
@@ -929,7 +850,6 @@
             var card = btnEl.closest('.card');
             var toggle = card.querySelector('.dropdown-toggle');
             var selected = toggle.getAttribute('data-selected');
-
             if (!selected) {
                 alert("⚠️ Please select a plan first!");
                 return;
@@ -962,7 +882,6 @@
             var nav = document.getElementById('mobileNav');
             var icon = document.getElementById('menuIcon');
             nav.classList.toggle('show');
-
             if (nav.classList.contains('show')) {
                 icon.setAttribute('data-lucide', 'x');
             } else {
@@ -980,4 +899,4 @@
         });
     </script>
 </body>
-                            </html>
+    </html>
