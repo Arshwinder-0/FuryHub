@@ -41,7 +41,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
-            background: rgba(8, 8, 8, 0.9);
+            background: rgba(8, 8, 8, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -50,84 +50,70 @@
         .logo-area { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-img-nav { width: 35px; height: 35px; border-radius: 6px; }
         .brand-name { font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: 1px; text-transform: uppercase; }
-
         .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.85rem; margin-left: 30px; transition: var(--transition); }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- Hero Banner (FIXED VISIBILITY) --- */
-        .hero-banner-container {
+        /* --- Hero Banner (Full Visibility) --- */
+        .banner-section {
             width: 100%;
             position: relative;
+            padding-top: 65px; /* Navbar offset */
             background: #000;
-            line-height: 0;
-            padding-top: 70px; /* Navbar space */
         }
 
-        .hero-banner-container img {
+        .banner-section img {
             width: 100%;
-            height: auto; /* Shows 100% of the image in original shape */
+            height: auto; /* Keeps original shape */
             display: block;
         }
 
-        .banner-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(8,8,8,0.2) 0%, rgba(8,8,8,0.8) 100%);
-            pointer-events: none;
-        }
-
-        .banner-logo-wrapper {
+        .banner-logo-overlay {
             position: absolute;
             top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            text-align: center;
-            width: 100%;
         }
 
-        .hero-logo-large {
-            width: clamp(100px, 15vw, 180px);
-            height: auto;
+        .logo-large {
+            width: clamp(100px, 18vw, 200px);
             border-radius: 20px;
             border: 2px solid var(--accent);
-            box-shadow: 0 0 40px var(--accent-glow);
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+            box-shadow: 0 0 50px var(--accent-glow);
             animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
 
         /* --- Stats Row --- */
-        .stats-wrapper {
+        .stats-container {
             max-width: 900px;
-            margin: -30px auto 40px;
+            margin: -40px auto 40px;
             position: relative;
             z-index: 20;
             padding: 0 20px;
         }
 
         .stats-glass {
-            background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(15px);
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             justify-content: space-around;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
         }
 
-        .stat-box h3 { color: var(--accent); font-size: 1.6rem; margin-bottom: 5px; }
-        .stat-box p { color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box h3 { color: var(--accent); font-size: 1.8rem; }
+        .stat-box p { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* --- Content Layout --- */
+        /* --- Grid & Content --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 5% 100px; }
-        
-        .section-header {
+        .section-title {
             font-size: 1.8rem;
             margin: 60px 0 30px;
             display: flex;
@@ -135,64 +121,33 @@
             gap: 15px;
             font-family: 'Poppins';
         }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
 
-        .section-header::after {
-            content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        /* --- Luxury Product Card --- */
+        /* --- Luxury Card --- */
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px;
             padding: 25px;
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
             position: relative;
         }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px; right: 15px;
-            padding: 4px 10px;
-            border-radius: 50px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .badge-hot { background: #ff4d4d; color: #fff; }
-        .badge-value { background: var(--accent); color: #000; }
-        .badge-fast { background: #00d2ff; color: #fff; }
-
-        .card-top { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .brand-logo { width: 45px; height: 45px; object-fit: contain; border-radius: 10px; }
+        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .brand-icon { width: 50px; height: 50px; object-fit: contain; border-radius: 12px; }
         .card-title { font-size: 1.1rem; font-weight: 600; }
 
-        .price-display { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
-        .price-display span { font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
+        .price { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
+        .price span { font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
 
-        /* --- Luxury Dropdown --- */
-        .custom-select {
-            position: relative;
-            margin-bottom: 15px;
-        }
-
-        .select-trigger {
+        /* --- Dropdowns --- */
+        .dropdown { position: relative; margin-bottom: 15px; }
+        .dropdown-btn {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.08);
             padding: 12px 15px;
             border-radius: 12px;
             cursor: pointer;
@@ -200,68 +155,76 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
-            transition: var(--transition);
+            width: 100%;
         }
-
-        .select-trigger:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
-
-        .select-options {
+        .dropdown-menu {
             position: absolute;
-            top: calc(100% + 5px);
-            left: 0; width: 100%;
+            top: 105%; left: 0; width: 100%;
             background: #1a1a1a;
             border: 1px solid var(--accent);
             border-radius: 12px;
-            z-index: 50;
+            z-index: 100;
             display: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,1);
+        }
+        .dropdown-option { padding: 12px 15px; font-size: 0.85rem; display: flex; justify-content: space-between; cursor: pointer; transition: 0.2s; }
+        .dropdown-option:hover { background: var(--accent); color: #000; }
+
+        /* --- Buttons --- */
+        .buy-btn {
+            width: 100%; padding: 14px;
+            background: transparent; border: 1px solid var(--accent);
+            color: var(--accent); border-radius: 12px;
+            font-weight: 700; cursor: pointer; transition: var(--transition);
+            text-align: center; display: block; text-decoration: none;
+        }
+        .buy-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
+
+        .info-btn {
+            margin-bottom: 10px; padding: 8px; width: 100%;
+            background: rgba(212, 175, 55, 0.1); border: 1px dashed var(--accent);
+            color: var(--accent); border-radius: 10px; font-size: 0.8rem; cursor: pointer;
         }
 
-        .option {
-            padding: 12px 15px;
-            font-size: 0.85rem;
-            display: flex;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: 0.2s;
+        /* --- Discord Bot Modal --- */
+        .modal {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center; justify-content: center;
+            padding: 20px;
         }
-
-        .option:hover { background: var(--accent); color: #000; }
-        .option.active { display: block; }
-
-        .buy-now-btn {
-            width: 100%;
-            padding: 14px;
-            background: transparent;
+        .modal-content {
+            background: #111;
             border: 1px solid var(--accent);
-            color: var(--accent);
-            border-radius: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
+            border-radius: 24px;
+            max-width: 600px; width: 100%;
+            padding: 40px;
+            box-shadow: 0 0 50px var(--accent-glow);
+            position: relative;
         }
-
-        .buy-now-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
+        .modal-close { position: absolute; top: 20px; right: 20px; cursor: pointer; color: var(--accent); }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+        .feat-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ddd; }
+        .feat-item i { color: var(--accent); }
 
         /* --- Footer --- */
-        footer { padding: 60px 5%; text-align: center; background: #050505; border-top: 1px solid #111; }
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid #111; }
         .made-by { color: #444; font-size: 0.8rem; margin-top: 10px; }
         .made-by a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .feature-grid { grid-template-columns: 1fr; }
             .stats-glass { flex-direction: column; gap: 20px; }
-            .hero-logo-large { width: 120px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navbar -->
     <nav>
         <a href="index.html" class="logo-area">
             <img src="logo.png" class="logo-img-nav" alt="FURYHUB">
@@ -275,197 +238,139 @@
         </div>
     </nav>
 
-    <!-- Banner Section -->
-    <section class="hero-banner-container">
-        <img src="banner.gif" alt="🚀">
-        <div class="banner-overlay"></div>
-        <div class="banner-logo-wrapper">
-            <img src="logo.png" class="hero-logo-large" alt="FURYHUB Logo">
+    <!-- Banner -->
+    <section class="banner-section">
+        <img src="banner.gif" alt="FURYHUB Products">
+        <div class="banner-logo-overlay">
+            <img src="logo.png" class="logo-large" alt="FURYHUB">
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <div class="stats-wrapper">
+    <!-- Stats -->
+    <div class="stats-container">
         <div class="stats-glass" data-aos="fade-up">
-            <div class="stat-box">
-                <h3>⭐ 4.6</h3>
-                <p>Global Rating</p>
-            </div>
-            <div class="stat-box">
-                <h3>👥 100+</h3>
-                <p>Happy Clients</p>
-            </div>
-            <div class="stat-box">
-                <h3>🔥 250+</h3>
-                <p>Success Deals</p>
-            </div>
+            <div class="stat-box"><h3>⭐ 4.6</h3><p>Rating</p></div>
+            <div class="stat-box"><h3>👥 100+</h3><p>Happy Clients</p></div>
+            <div class="stat-box"><h3>🔥 250+</h3><p>Success Deals</p></div>
         </div>
     </div>
 
     <div class="container">
 
         <!-- STREAMING -->
-        <h2 class="section-header" data-aos="fade-right">🎬 Streaming Services</h2>
+        <h2 class="section-title" data-aos="fade-right">🎬 Streaming Services</h2>
         <div class="grid">
-            <!-- Netflix -->
             <div class="card" data-aos="fade-up">
-                <span class="badge badge-hot">🔥 HOT</span>
-                <div class="card-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" class="brand-logo">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" class="brand-icon">
                     <span class="card-title">Netflix UHD</span>
                 </div>
-                <div class="price-display">₹150 <span>/ Month</span></div>
-                <button onclick="buyNow('Netflix UHD', 'Monthly Plan')" class="buy-now-btn">Buy Now</button>
+                <div class="price">₹150 <span>/ Month</span></div>
+                <button onclick="buyNow('Netflix UHD', 'Standard Plan')" class="buy-btn">Buy Now</button>
             </div>
 
-            <!-- YouTube -->
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" class="brand-logo">
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" class="brand-icon">
                     <span class="card-title">YouTube Premium</span>
                 </div>
-                <div class="custom-select" id="yt-select">
-                    <div class="select-trigger">Select Plan <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('yt-select', '1 Month', '₹55')"><span>1 Month</span> <b>₹55</b></div>
-                        <div class="option" onclick="setSelect('yt-select', '3 Months 💎', '₹150')"><span>3 Months</span> <b>₹150</b></div>
-                        <div class="option" onclick="setSelect('yt-select', 'Family Plan', '₹120')"><span>Family</span> <b>₹120</b></div>
+                <div class="dropdown" id="yt-drop">
+                    <div class="dropdown-btn">Select Plan <i data-lucide="chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-option" onclick="setSelect('yt-drop', '1 Month', '₹55')"><span>1 Month</span> <b>₹55</b></div>
+                        <div class="dropdown-option" onclick="setSelect('yt-drop', '3 Months', '₹150')"><span>3 Months</span> <b>₹150</b></div>
+                        <div class="dropdown-option" onclick="setSelect('yt-drop', 'Family Plan', '₹120')"><span>Family</span> <b>₹120</b></div>
                     </div>
                 </div>
-                <button onclick="buyFromSelect('YouTube Premium', 'yt-select')" class="buy-now-btn">Buy Now</button>
+                <button onclick="buyFromSelect('YouTube Premium', 'yt-drop')" class="buy-btn">Buy Now</button>
             </div>
 
-            <!-- Prime Video -->
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" class="brand-logo">
-                    <span class="card-title">Prime Video</span>
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <img src="chaupal_logo.png" class="brand-icon" onerror="this.src='https://lucide.dev/api/icons/play'">
+                    <span class="card-title">CHAUPAL</span>
                 </div>
-                <div class="custom-select" id="prime-select">
-                    <div class="select-trigger">Select Plan <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('prime-select', '1M Ads', '₹90')"><span>1M Ads</span> <b>₹90</b></div>
-                        <div class="option" onclick="setSelect('prime-select', '6M Ads', '₹170')"><span>6M Ads</span> <b>₹170</b></div>
-                        <div class="option" onclick="setSelect('prime-select', '1M 4K', '₹100')"><span>1M 4K</span> <b>₹100</b></div>
-                        <div class="option" onclick="setSelect('prime-select', '6M 4K 🔥', '₹270')"><span>6M 4K</span> <b>₹270</b></div>
+                <div class="dropdown" id="ch-drop">
+                    <div class="dropdown-btn">Select Plan <i data-lucide="chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-option" onclick="setSelect('ch-drop', '1 Month', '₹100')"><span>1 Month</span> <b>₹100</b></div>
+                        <div class="dropdown-option" onclick="setSelect('ch-drop', '3 Months', '₹240')"><span>3 Months</span> <b>₹240</b></div>
+                        <div class="dropdown-option" onclick="setSelect('ch-drop', '6 Months', '₹340')"><span>6 Months</span> <b>₹340</b></div>
+                        <div class="dropdown-option" onclick="setSelect('ch-drop', '12 Months', '₹430')"><span>12 Months</span> <b>₹430</b></div>
                     </div>
                 </div>
-                <button onclick="buyFromSelect('Prime Video', 'prime-select')" class="buy-now-btn">Buy Now</button>
-            </div>
-
-            <!-- Hotstar -->
-            <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_Hotstar_logo.png" class="brand-logo">
-                    <span class="card-title">Disney+ Hotstar</span>
-                </div>
-                <div class="price-display">₹80 <span>/ Plan</span></div>
-                <button onclick="buyNow('Disney+ Hotstar', 'Standard Plan')" class="buy-now-btn">Buy Now</button>
-            </div>
-            
-            <!-- Chaupal -->
-            <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <img src="chaupal_logo.png" class="brand-logo" onerror="this.src='https://lucide.dev/api/icons/play-circle'">
-                    <span class="card-title">Chaupal </span>
-                </div>
-                <div class="custom-select" id="chaupal-select">
-                    <div class="select-trigger">Select Plan <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('chaupal-select', '1 Month', '₹100')"><span>1 Month</span> <b>₹100</b></div>
-                        <div class="option" onclick="setSelect('chaupal-select', '3 Months', '₹240')"><span>3 Months</span> <b>₹240</b></div>
-                        <div class="option" onclick="setSelect('chaupal-select', '6 Months', '₹340')"><span>6 Months</span> <b>₹340</b></div>
-                        <div class="option" onclick="setSelect('chaupal-select', '12 Months 💎', '₹430')"><span>12 Months</span> <b>₹430</b></div>
-                    </div>
-                </div>
-                <button onclick="buyFromSelect('Chaupal TV', 'chaupal-select')" class="buy-now-btn">Buy Now</button>
-            </div>
-            
-            <!-- Spotify -->
-            <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo-png.png" class="brand-logo">
-                    <span class="card-title">Spotify Premium</span>
-                </div>
-                <div class="price-display">₹130 <span>/ One-time</span></div>
-                <button onclick="buyNow('Spotify Premium', 'Premium Plan')" class="buy-now-btn">Buy Now</button>
+                <button onclick="buyFromSelect('Chaupal', 'ch-drop')" class="buy-btn">Buy Now</button>
             </div>
         </div>
 
         <!-- DISCORD -->
-        <h2 class="section-header" data-aos="fade-right">💬 Discord Services</h2>
+        <h2 class="section-title" data-aos="fade-right">💬 Discord Services</h2>
         <div class="grid">
             <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <img src="discord_logo.png" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/73/Discord_Color_Text_Logo.svg'">
-                    <span class="card-title">Discord Nitro</span>
+                <div class="card-header">
+                    <img src="bot.png" class="brand-icon" onerror="this.src='https://lucide.dev/api/icons/bot'">
+                    <span class="card-title">Discord Bot</span>
                 </div>
-                <div class="custom-select" id="nitro-select">
-                    <div class="select-trigger">Select Plan <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('nitro-select', '1 Month', '₹80')"><span>1 Month</span> <b>₹80</b></div>
-                        <div class="option" onclick="setSelect('nitro-select', '3 Months', '₹200')"><span>3 Months</span> <b>₹200</b></div>
-                    </div>
-                </div>
-                <button onclick="buyFromSelect('Discord Nitro', 'nitro-select')" class="buy-now-btn">Buy Now</button>
+                <div class="price">₹200</div>
+                <button class="info-btn" onclick="toggleModal(true)">View Features Menu</button>
+                <button onclick="buyNow('Discord Bot', 'Personal Bot Plan')" class="buy-btn">Buy Now</button>
             </div>
+
             <div class="card" data-aos="fade-up">
-                <span class="badge badge-hot">🔥 HOT</span>
-                <div class="card-top">
-                    <i data-lucide="server" class="brand-logo" style="color:var(--accent)"></i>
+                <div class="card-header">
+                    <i data-lucide="server" class="brand-icon" style="color:var(--accent)"></i>
                     <span class="card-title">Discord Server Setup</span>
                 </div>
-                <div class="custom-select" id="setup-select">
-                    <div class="select-trigger">Select Type <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('setup-select', 'Basic Setup', '₹100')"><span>Basic</span> <b>₹100</b></div>
-                        <div class="option" onclick="setSelect('setup-select', 'Full Setup 🔥', '₹250')"><span>Full</span> <b>₹250</b></div>
-                        <div class="option" onclick="setSelect('setup-select', 'Custom Bot', '₹220')"><span>Bot</span> <b>₹220</b></div>
+                <div class="dropdown" id="setup-drop">
+                    <div class="dropdown-btn">Select Setup <i data-lucide="chevron-down"></i></div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-option" onclick="setSelect('setup-drop', 'BASIC SETUP', '₹100')"><span>BASIC SETUP</span> <b>₹100</b></div>
+                        <div class="dropdown-option" onclick="setSelect('setup-drop', 'SETUP WITH PERSONAL BOT', '₹220')"><span>PREMIUM BOT SETUP</span> <b>₹220</b></div>
                     </div>
                 </div>
-                <button onclick="buyFromSelect('Discord Setup', 'setup-select')" class="buy-now-btn">Buy Now</button>
+                <button onclick="buyFromSelect('Discord Server Setup', 'setup-drop')" class="buy-btn">Buy Now</button>
             </div>
-        </div>
 
-        <!-- INSTAGRAM -->
-        <h2 class="section-header" data-aos="fade-right">📱 Instagram Services</h2>
-        <div class="grid">
             <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <i data-lucide="instagram" class="brand-logo" style="color:var(--accent)"></i>
-                    <span class="card-title">Engagement</span>
+                <div class="card-header">
+                    <img src="owo.png" class="brand-icon" onerror="this.src='https://lucide.dev/api/icons/coins'">
+                    <span class="card-title">1 Million OwO</span>
                 </div>
-                <div class="custom-select" id="ig-select">
-                    <div class="select-trigger">Select Service <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('ig-select', '1K Reel Views', '₹3')"><span>1K Reel Views</span> <b>₹3</b></div>
-                        <div class="option" onclick="setSelect('ig-select', '1K Post Views', '₹5')"><span>1K Post Views</span> <b>₹5</b></div>
-                        <div class="option" onclick="setSelect('ig-select', 'Global Likes', '₹50')"><span>Global Likes</span> <b>₹50</b></div>
-                        <div class="option" onclick="setSelect('ig-select', 'Indian Likes', '₹80')"><span>Indian Likes</span> <b>₹80</b></div>
-                    </div>
-                </div>
-                <button onclick="buyFromSelect('Instagram Service', 'ig-select')" class="buy-now-btn">Buy Now</button>
-            </div>
-            <div class="card" data-aos="fade-up">
-                <div class="card-top">
-                    <i data-lucide="users" class="brand-logo" style="color:var(--accent)"></i>
-                    <span class="card-title">Followers</span>
-                </div>
-                <div class="custom-select" id="follow-select">
-                    <div class="select-trigger">Select Quality <i data-lucide="chevron-down"></i></div>
-                    <div class="select-options">
-                        <div class="option" onclick="setSelect('follow-select', 'Global Followers', '₹220')"><span>Global</span> <b>₹220</b></div>
-                        <div class="option" onclick="setSelect('follow-select', 'Indian Followers', '₹250')"><span>Indian</span> <b>₹250</b></div>
-                    </div>
-                </div>
-                <button onclick="buyFromSelect('Instagram Followers', 'follow-select')" class="buy-now-btn">Buy Now</button>
+                <div class="price">₹20</div>
+                <button onclick="buyNow('1 Million OwO', 'Cash Plan')" class="buy-btn">Buy Now</button>
             </div>
         </div>
 
     </div>
 
+    <!-- Features Modal -->
+    <div class="modal" id="botModal">
+        <div class="modal-content">
+            <i data-lucide="x" class="modal-close" onclick="toggleModal(false)"></i>
+            <h3 style="color:var(--accent); text-align: center; font-size: 1.5rem;">PREMIUM BOT FEATURES</h3>
+            <p style="text-align: center; font-size: 0.8rem; color: #777; margin-top: 5px;">High-performance Discord Integration</p>
+            
+            <div class="feature-grid">
+                <div class="feat-item"><i data-lucide="check-circle"></i> AUTO REACT</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> WORKS IN DM</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> USE EMOJIS WITHOUT NITRO</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> EVENT LISTENERS</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> SERVER MANAGEMENT</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> AI POWERED</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> TRANSLATION</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> FORUMS & CHATBOT</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> USER AUTHENTICATION</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> SAFE & SECURE</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> DISCORD VERIFIED</div>
+                <div class="feat-item"><i data-lucide="check-circle"></i> 24/7 ONLINE</div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-weight: 700; color: var(--accent);">MANY MORE FEATURES INCLUDED</p>
+            <button class="buy-btn" style="margin-top: 20px;" onclick="buyNow('Discord Bot', 'Premium Feature Plan')">GET THIS BOT</button>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2026 FURYHUB | High-End Digital marketplace</p>
+        <p>© 2026 FURYHUB | Premium Digital Experience</p>
         <p class="made-by">Made by <a href="https://wa.me/919024487624">legend</a></p>
     </footer>
 
@@ -474,49 +379,45 @@
         AOS.init({ duration: 1000, once: true });
         lucide.createIcons();
 
-        // Dropdown Handlers
-        document.querySelectorAll('.select-trigger').forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
+        // Dropdown Logic
+        document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const options = trigger.nextElementSibling;
-                const isOpen = options.style.display === 'block';
-                
-                // Close all others
-                document.querySelectorAll('.select-options').forEach(opt => opt.style.display = 'none');
-                
-                options.style.display = isOpen ? 'none' : 'block';
+                const menu = btn.nextElementSibling;
+                const isOpen = menu.style.display === 'block';
+                document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+                menu.style.display = isOpen ? 'none' : 'block';
             });
         });
 
         document.addEventListener('click', () => {
-            document.querySelectorAll('.select-options').forEach(opt => opt.style.display = 'none');
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
         });
 
         function setSelect(id, name, price) {
-            const trigger = document.querySelector(`#${id} .select-trigger`);
-            trigger.innerHTML = `${name} (${price}) <i data-lucide="chevron-down"></i>`;
-            trigger.setAttribute('data-selected', name);
+            const btn = document.querySelector(`#${id} .dropdown-btn`);
+            btn.innerHTML = `${name} (${price}) <i data-lucide="chevron-down"></i>`;
+            btn.setAttribute('data-val', name);
             lucide.createIcons();
         }
 
         // WhatsApp Logic
         function buyNow(product, plan) {
-            const whatsappNum = "916386443062";
-            const message = `Hello FURYHUB! 🔥%0A%0AI want to buy: *${product}*%0APlan: *${plan}*%0A%0APlease provide me with the necessary info and payment methods. 💎`;
-            window.location.href = `https://wa.me/${whatsappNum}?text=${message}`;
+            const num = "916386443062";
+            const text = `Hello FURYHUB!%0A%0AI want to buy: *${product}*%0APlan: *${plan}*%0A%0APlease provide info and payment methods.`;
+            window.location.href = `https://wa.me/${num}?text=${text}`;
         }
 
-        function buyFromSelect(product, selectId) {
-            const trigger = document.querySelector(`#${selectId} .select-trigger`);
-            const selectedPlan = trigger.getAttribute('data-selected');
-            
-            if(!selectedPlan) {
-                alert("Please select a plan first!");
-                return;
-            }
-            
-            buyNow(product, selectedPlan);
+        function buyFromSelect(product, id) {
+            const val = document.querySelector(`#${id} .dropdown-btn`).getAttribute('data-val');
+            if(!val) return alert("Please select a plan first!");
+            buyNow(product, val);
+        }
+
+        // Modal Logic
+        function toggleModal(show) {
+            document.getElementById('botModal').style.display = show ? 'flex' : 'none';
         }
     </script>
 </body>
-                    </html>
+</html>
