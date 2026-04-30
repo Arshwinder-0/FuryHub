@@ -10,8 +10,9 @@
 
     <style>
         :root {
-            --bg-color: #080808;
-            --card-bg: #121212;
+            /* Updated for better contrast with new background */
+            --bg-color: #020617; 
+            --card-bg: rgba(18, 18, 18, 0.7);
             --accent: #D4AF37;
             --accent-glow: rgba(212, 175, 55, 0.4);
             --accent-soft: rgba(212, 175, 55, 0.1);
@@ -24,12 +25,31 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
+        /* --- Task 2: Background Improvement --- */
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(-45deg, #020617, #0f172a, #020617, #1e1b4b);
+            background-size: 400% 400%;
+            animation: luxuryGradient 12s ease infinite;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        @keyframes luxuryGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle glow behind the cards container */
+        .container { 
+            position: relative; 
+            z-index: 2; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px 5% 100px; 
         }
 
         @keyframes shimmer {
@@ -60,7 +80,7 @@
             position: fixed; top: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%;
-            background: rgba(8, 8, 8, 0.95);
+            background: rgba(2, 6, 23, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
@@ -123,7 +143,7 @@
         /* --- Banner --- */
         .banner-section {
             width: 100%; position: relative;
-            padding: 80px 15px 0; background: var(--bg-color);
+            padding: 80px 15px 0;
         }
         .banner-section img {
             width: 100%; height: auto; display: block;
@@ -138,7 +158,7 @@
             z-index: 20; padding: 0 20px;
         }
         .stats-glass {
-            background: rgba(18, 18, 18, 0.8);
+            background: rgba(18, 18, 18, 0.6);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px; display: flex; justify-content: space-around;
@@ -148,9 +168,6 @@
         .stat-box:hover { transform: scale(1.05); }
         .stat-box h3 { color: var(--accent); font-size: 1.8rem; font-family: 'Poppins', sans-serif; }
         .stat-box p { color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px; }
-
-        /* --- Container --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px 5% 100px; }
 
         .section-title {
             font-size: 1.8rem; margin: 60px 0 30px;
@@ -170,7 +187,8 @@
         /* --- Card --- */
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius); padding: 28px;
             transition: var(--transition); position: relative;
             overflow: visible; cursor: default; z-index: 1;
@@ -368,7 +386,7 @@
         .modal-footer-text { text-align: center; margin-top: 30px; font-weight: 700; color: var(--accent); font-size: 0.9rem; }
 
         /* --- Footer --- */
-        footer { padding: 60px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.3); }
         footer p { color: #555; font-size: 0.85rem; }
         .made-by { color: #444; font-size: 0.8rem; margin-top: 10px; }
         .made-by a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition); }
@@ -449,6 +467,31 @@
 
     <div class="container">
 
+        <!-- ===== TASK 1: ADD NEW PRODUCTS (AI SECTION) ===== -->
+        <h2 class="section-title" data-aos="fade-right">🤖 AI & Productivity</h2>
+        <div class="grid">
+            <!-- Gemini AI Pro -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/1200px-Google_Gemini_logo.svg.png" class="brand-icon" alt="Gemini AI">
+                    <span class="card-title">Gemini AI Pro</span>
+                </div>
+                <div class="price">₹100 <span>/ Month</span></div>
+                <button onclick="buyNow('Gemini AI Pro', 'Monthly Plan - ₹100')" class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- ChatGPT Plus -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <span class="card-tag">Premium</span>
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" class="brand-icon" alt="ChatGPT">
+                    <span class="card-title">ChatGPT Plus</span>
+                </div>
+                <div class="price">₹330 <span>/ Month</span></div>
+                <button onclick="buyNow('ChatGPT Plus', 'Monthly Plan - ₹330')" class="buy-btn">Buy Now</button>
+            </div>
+        </div>
+
         <!-- ===== STREAMING ===== -->
         <h2 class="section-title" data-aos="fade-right">🎬 Streaming Services</h2>
         <div class="grid">
@@ -483,6 +526,37 @@
                     </div>
                 </div>
                 <button onclick="buyFromDropdown(this, 'Amazon Prime Video')" class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- Zee5 (New) -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.svg" class="brand-icon" alt="Zee5">
+                    <span class="card-title">Zee5</span>
+                </div>
+                <div class="price">₹230 <span>/ Yearly</span></div>
+                <button onclick="buyNow('Zee5', 'Yearly Plan - ₹230')" class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- Kuku FM (New) -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSM_0O-QZ0p2QG9m9L-uD_D-9_0EwU9_8Jlg&s" class="brand-icon" alt="Kuku FM">
+                    <span class="card-title">Kuku TV & FM</span>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        <span>Select Plan</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="dropdown-list">
+                        <div class="dropdown-item" onclick="selectOption(this, '1 Month', '₹160')"><span>1 Month</span> <b>₹160</b></div>
+                        <div class="dropdown-item" onclick="selectOption(this, '3 Months', '₹360')"><span>3 Months</span> <b>₹360</b></div>
+                        <div class="dropdown-item" onclick="selectOption(this, '6 Months', '₹630')"><span>6 Months</span> <b>₹630</b></div>
+                        <div class="dropdown-item" onclick="selectOption(this, '12 Months', '₹999')"><span>12 Months</span> <b>₹999</b></div>
+                    </div>
+                </div>
+                <button onclick="buyFromDropdown(this, 'Kuku TV & FM')" class="buy-btn">Buy Now</button>
             </div>
 
             <!-- Hotstar -->
@@ -560,6 +634,16 @@
                 </div>
                 <div class="price">₹200 <span>/ Year</span></div>
                 <button onclick="buyNow('Canva Pro', 'Yearly Plan - ₹200')" class="buy-btn">Buy Now</button>
+            </div>
+
+            <!-- CapCut Pro (New) -->
+            <div class="card" data-aos="fade-up" data-aos-delay="50">
+                <div class="card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/CapCut_logo.svg" class="brand-icon" alt="CapCut">
+                    <span class="card-title">CapCut Pro</span>
+                </div>
+                <div class="price">₹380 <span>/ Month</span></div>
+                <button onclick="buyNow('CapCut Pro', 'Monthly Plan - ₹380')" class="buy-btn">Buy Now</button>
             </div>
 
             <!-- Spotify -->
@@ -666,6 +750,32 @@
                 <button onclick="buyNow('1 Million OwO', 'Cash Plan - ₹20')" class="buy-btn">Buy Now</button>
             </div>
 
+        </div>
+
+        <!-- ===== GAMING & SECURITY (NEW) ===== -->
+        <h2 class="section-title" data-aos="fade-right">🎮 Gaming & Security</h2>
+        <div class="grid">
+            <!-- VPN -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-header">
+                    <i data-lucide="shield-check" class="brand-icon" style="color:var(--accent)"></i>
+                    <span class="card-title">Premium VPN</span>
+                </div>
+                <div class="price">Custom <span>Pricing</span></div>
+                <p class="card-desc">High speed, secure VPN for gaming and browsing. Multiple locations available.</p>
+                <a href="https://wa.me/916386443062?text=Hello%20YASH🔥!%0A%0AI%20am%20interested%20in%20VPN%20services.%20Please%20share%20plans." class="dm-btn">💬 DM For Prices</a>
+            </div>
+
+            <!-- BGMI -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-header">
+                    <i data-lucide="gamepad-2" class="brand-icon" style="color:var(--accent)"></i>
+                    <span class="card-title">BGMI & Free IDs</span>
+                </div>
+                <div class="price">Premium <span>Accounts</span></div>
+                <p class="card-desc">Stacked BGMI and Free Fire IDs at cheapest rates. Genuine & safe accounts.</p>
+                <a href="https://wa.me/916386443062?text=Hello%20YASH🔥!%0A%0AI%20am%20interested%20in%20BGMI%2FGame%20IDs.%20Show%20me%20what%20is%20available." class="dm-btn">💬 DM For Info</a>
+            </div>
         </div>
 
         <!-- ===== WEBSITE ===== -->
